@@ -21,6 +21,17 @@ necessary as root):
 make clean install
 ```
 
+#	Patches
++	dwm-alpha-20180613-b69c870.diff
++	dwm-autostart-20161205-bb3bd6f.diff
++	dwm-awesomebar-20191003-80e2a76.diff
++	dwm-fibonacci-5.8.2.diff
++	dwm-fullscreen-6.2.diff
++	dwm-hide_vacant_tags-6.2.diff
++	dwm-noborder-6.2.diff
++	dwm-rotatestack-20161021-ab9571b.diff
++	dwm-vanitygaps-20190508-6.2.diff
+
 #	Running dwm
 Add the following line to your .xinitrc to start dwm using startx:
 ```
