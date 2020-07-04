@@ -73,20 +73,18 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]       = { "st", NULL };
 static const char *browsercmd[]    = { "google-chrome-stable", NULL };
-static const char *backlight_inc[] = {"/home/li/scripts/backlight-inc.sh", NULL};
-static const char *backlight_dec[] = {"/home/li/scripts/backlight-dec.sh", NULL};
-static const char *vol_up[]        = {"/home/li/scripts/vol-up.sh", NULL};
-static const char *vol_down[]      = {"/home/li/scripts/vol-down.sh", NULL};
+static const char *filemancmd[]	   = { "st", "-e", "ranger", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,	                XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,			XK_e,	   spawn,	   {.v = browsercmd } },
-	{ MODKEY,			XK_F11,	   spawn,	   {.v = backlight_dec} },
-	{ MODKEY,			XK_F12,	   spawn,	   {.v = backlight_inc} },
-	{ MODKEY,			XK_F2,	   spawn,	   {.v = vol_down} },
-	{ MODKEY,			XK_F3,     spawn,	   {.v = vol_up} },
+	{ MODKEY,			XK_r,	   spawn,	   {.v = filemancmd } },
+	{ MODKEY,			XK_F11,	   spawn,	   SHCMD("xbacklight -dec 5; kill -44 $(pidof dwmblocks)") },
+	{ MODKEY,			XK_F12,	   spawn,	   SHCMD("xbacklight -inc 5; kill -44 $(pidof dwmblocks)") },
+	{ MODKEY,			XK_F2,	   spawn,	   SHCMD("amixer -q set Master 5%- umute; kill -43 $(pidof dwmblocks)") },
+	{ MODKEY,			XK_F3,	   spawn,	   SHCMD("amixer -q set Master 5%+ umute; kill -43 $(pidof dwmblocks)") },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY|ShiftMask,             XK_j,      rotatestack,    {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_k,      rotatestack,    {.i = -1 } },
@@ -103,8 +101,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[3]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[4]} },
 	{ MODKEY|ShiftMask,             XK_f,      fullscreen,     {0} },
-	{ MODKEY,                       XK_space,  setlayout,      {0} },
-	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
+//	{ MODKEY,                       XK_space,  setlayout,      {0} },
+//	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },

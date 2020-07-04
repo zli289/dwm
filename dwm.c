@@ -1543,7 +1543,8 @@ run(void)
 
 void
 runAutostart(void) {
-	system("cd ~/scripts; ./autostart.sh &");
+	system("killall -q dwmblocks; dwmblocks &");
+	system("bash ~/scripts/autostart");
 }
 
 void
