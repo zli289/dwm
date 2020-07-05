@@ -23,7 +23,6 @@ make clean install
 
 #	Patches
 +	dwm-alpha-20180613-b69c870.diff
-+	dwm-autostart-20161205-bb3bd6f.diff
 +	dwm-awesomebar-20191003-80e2a76.diff
 +	dwm-fibonacci-5.8.2.diff
 +	dwm-fullscreen-6.2.diff
@@ -44,15 +43,9 @@ DISPLAY=foo.bar:1 exec dwm
 ```
 (This will start dwm on display :1 of the host foo.bar.)
 
-In order to display status info in the bar, you can do something
-like this in your .xinitrc:
-```
-while xsetroot -name "`date` `uptime | sed 's/.*,//'`"
-do
-	sleep 1
-done &
-exec dwm
-```
+Status bar is driven by [dwmblocks](https://github.com/zli289/dwmblocks) now. 
+
+```.xprofile``` will execute the autostart programs to keep everything under xinit.
 
 #	Configuration
 The configuration of dwm is done by creating a custom config.h
